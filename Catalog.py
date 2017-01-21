@@ -1,25 +1,30 @@
-class Course:
-    def __init__(self, nbr, title, units, prereqs):
-        self.nbr = nbr
-        self.title = title
-        self.units = units
-        self.prereqs = prereqs
-        self.offerings = []
-
-    def add_offering(self, year, quarter):
-        self.offerings += [(year, quarter)]
-
-    def is_offered(self, year, quater):
-        return (year, quarter) in self.offerings
+# Quarter enumerations
+FALL = 1
+WINTER = 2
+SPRING = 3
+SUMMER = 4
 
 class Catalog:
     def __init__(self):
         self.courses = {}
 
     # Add a new course
-    def add_course(self, course):
-        self.courses[course.nbr] course
+    def add_course(self, nbr, title, units, prereqs):
+        self.courses[nbr] = {
+                'title': title,
+                'units': units,
+                'prereqs': prereqs,
+                'offerings': []
+                }
+
+    # Add  offering
+    def add_offering(self, nbr, year, quarter):
+        self.courses[nbr]['offerings'] += [(year, quarter)]
 
     # Get course
     def get_course(self, nbr):
-        return self.courses[course.nbr]
+        return self.courses[nbr]
+
+    # Is course offered at certain year, quarter
+    def is_offered(self, nbr, year, quarter):
+        return (year, quarter) in self.courses[nbr]['offerings']
