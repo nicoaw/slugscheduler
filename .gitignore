@@ -1,3 +1,6 @@
 databases/
 errors/
 sessions/
+*.swp
+*.swo
+*.vim
