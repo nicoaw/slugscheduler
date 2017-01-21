@@ -13,7 +13,7 @@ class Catalog:
     # Add courses for a year from url
     def add(self, year, url):
         # Scrape url page for course information
-        # Course(title, units, prereqs, offerings)
+        # CODE HERE
 
         if self.min_year is None or self.min_year > year:
             self.min_year = year
@@ -39,6 +39,13 @@ class Catalog:
     # Is course offered at certain year, quarter
     def is_offered(self, nbr, year, quarter):
         return (year, quarter) in self.courses[nbr][3]
+
+    # Are the prereqs meet for course
+    def is_satisfied(self, transcript, nbr):
+        for prereq in self.get_prereqs(nbr):
+            if not transcript.has(prereq):
+                return False
+        return True
 
     # Get earliest year recorded
     def min_year(self):
