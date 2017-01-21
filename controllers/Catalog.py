@@ -1,8 +1,13 @@
+from urllib2 import urlopen
+from bs4 import BeautifulSoup
+import datetime
+import re
+
 # Quarter enumerations
-FALL = 1
-WINTER = 2
-SPRING = 3
-SUMMER = 4
+FALL = 'F'
+WINTER = 'W'
+SPRING = 'S'
+SUMMER = 'U'
 
 class Catalog:
     def __init__(self):
@@ -10,10 +15,22 @@ class Catalog:
         self.min_year = None
         self.max_year = None
 
-    # Add courses for a year from url
-    def add(self, year, url):
+    # Add courses for a specific program
+    def add(self, program):
+        current_year = get_current_catalog_year(program)
+        year = current_year
         # Scrape url page for course information
-        # CODE HERE
+        while True:
+            try:
+                url = get_course_descriptions_url(current_year, program, year)
+                html = urlopen(url)
+            except:
+                break
+
+            soup = BeautifulSoup(html, 'html.parser')
+            if year in [2015, 2016]:
+                self.__scrape_2015_and_2016(program, soup)
+            year -= 1
 
         if self.min_year is None or self.min_year > year:
             self.min_year = year
@@ -54,3 +71,56 @@ class Catalog:
     # Get most recent year recorded
     def max_year(self):
         return self.max_year
+
+    def __add_course(self, nbr, title, units, prereqs, offerings):
+        # print nbr, title, units, prereqs, offerings
+        self.courses[nbr] = (title, units, prereqs, offerings)
+
+    def __scrape_2015_and_2016(self, program, soup):
+        div = soup.find('div', {'class': 'content contentBox'})
+        for p in div.find_all('p'):
+            strongs = p.find_all('strong')
+            ems = p.find_all('em')
+            if len(strongs) > 2:
+                nbr = program.upper() + ' ' + strongs[0].text.replace('.', '')
+                title = strongs[1].text.replace('.', '')
+                offerings = [quarter for quarter in strongs[-1].text.split(',') if quarter in [FALL, WINTER, SPRING, SUMMER]]
+
+                # Parse units
+                units = 5
+                m = re.search('(\d+) [cC]redits', str(p))
+                if m:
+                    units = int(m.group(1))
+
+                # Parse prereqs
+                """
+                m = re.search('Prerequisite\(s\): ([^\.]+)', str(p))
+                if m:
+                    print m.group(1)
+                    m = re.search('(\d+)', m.group(1))
+                    if m:
+                        print m.groups()
+                """
+
+                self.__add_course(nbr, title, units, [], offerings)
+
+
+def get_current_catalog_year(program):
+    html = urlopen('http://registrar.ucsc.edu/catalog/programs-courses/program-statements/' + program + '.html')
+    soup = BeautifulSoup(html, 'html.parser')
+    div = soup.find('div', {'class': 'content contentBox'})
+    p = div.find_all('p')[1]
+    m = re.match(r'(\d+)\-\d+', p.text)
+    return int(m.group(1))
+
+def get_course_descriptions_url(current_year, program, year):
+    if current_year == year:
+        return 'http://registrar.ucsc.edu/catalog/programs-courses/course-descriptions/' + program + '.html'
+    else:
+        year -= 2000
+        academic_year = str(year) + '-' + str(year + 1)
+        return 'http://registrar.ucsc.edu/catalog/archive/' + academic_year + '/programs-courses/course-descriptions/' + program + '.html'
+
+catalog = Catalog()
+catalog.add('cmps')
+
