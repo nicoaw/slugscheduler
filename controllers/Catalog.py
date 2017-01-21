@@ -120,7 +120,3 @@ def get_course_descriptions_url(current_year, program, year):
         year -= 2000
         academic_year = str(year) + '-' + str(year + 1)
         return 'http://registrar.ucsc.edu/catalog/archive/' + academic_year + '/programs-courses/course-descriptions/' + program + '.html'
-
-catalog = Catalog()
-catalog.add('cmps')
-
