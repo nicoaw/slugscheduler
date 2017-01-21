@@ -5,7 +5,7 @@ class Scoreboard:
         self.ratings = Queue.PriorityQueue()
 
     # Rate courses in catalog
-    def rate(self, catalog):
+    def rate(self, catalog, transcript):
         # Rate courses from catalog
         # Rating(score, nbr)
         pass

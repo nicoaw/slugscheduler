@@ -38,7 +38,7 @@ class Catalog:
 
     # Is course offered at certain year, quarter
     def is_offered(self, nbr, year, quarter):
-        return (year, quarter) in self.courses[nbr]['offerings']
+        return (year, quarter) in self.courses[nbr][3]
 
     # Get earliest year recorded
     def min_year(self):
