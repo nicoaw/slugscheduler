@@ -25,15 +25,6 @@ def index():
         scoreboard.rate()
         schedule.build(scoreboard)
 
-    courses = Catalog.get_courses()
-    schedule.quarters = [[]] * 8
-    for i in range(len(schedule.quarters)):
-        for j in range(3):
-            nbr = random.choice(courses)
-            course = Catalog.get_course(nbr)
-            schedule.quarters[i] += [course]
-            courses.remove(nbr)
-
     return dict(
             schedule=schedule.quarters
             )
