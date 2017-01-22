@@ -29,9 +29,9 @@ def is_offered(self, course, year, quarter):
     return (year, quarter) in json.loads(course.offerings)
 
 # Are the prereqs meet for course
-def is_satisfied(transcript, course):
+def is_satisfied(transcript, requisites):
     def repl(m):
         return 'transcript.has(' + m.group(0) + ')'
 
-    expr = re.sub('("[^"]+")', repl, course.prereqs)
+    expr = re.sub('("[^"]+")', repl, requisites)
     return eval(expr)

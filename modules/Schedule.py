@@ -1,15 +1,31 @@
+import Catalog
+
 class Schedule:
-    def __init__(self, transcript):
+    def __init__(self, transcript, requirements):
         self.quarters = {}
         self.transcript = transcript
+        self.requirements = requirements
 
     # Build schedule for specific year and quarter
     def build(self, year, quarter, scoreboard):
-        # Add courses to correct year quarter
-        # [(year, quarter)] = <courses>
-        # CODE HERE
+        units = 0
+        while not Catalog.is_satisfied(self.transcript, self.requirements):
+            course = scoreboard.pop()
 
-        return
+            # Only allowed 19 units
+            if units + course.units > 19:
+                break
+
+            # Don't repeat a course
+            if self.transcript.has(course.nbr):
+                break
+
+            # Course prereqs not met
+            if not Catalog.is_satisfied(self.transcript, course.prereqs):
+                break
+            
+            self.quarters[(year, quarter)] = course
+            units += course.units
 
     # Get list of courses for specific year and quarter
     def get_quarter(self, year, quarter):
