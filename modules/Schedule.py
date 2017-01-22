@@ -1,7 +1,6 @@
 class Schedule:
-    def __init__(self, catalog, transcript):
+    def __init__(self, transcript):
         self.quarters = {}
-        self.catalog = catalog
         self.transcript = transcript
 
     # Build schedule for specific year and quarter

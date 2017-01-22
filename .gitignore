@@ -4,3 +4,4 @@ sessions/
 *.swp
 *.swo
 *.vim
+*.pyc

@@ -1,3 +1,6 @@
+from gluon import *
+db = current.db
+
 class Transcript:
     def __init__(self):
         self.courses = {}
