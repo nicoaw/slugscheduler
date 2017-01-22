@@ -26,7 +26,7 @@ def get_course(nbr):
     return db(db.course.nbr == nbr).select().first()
 
 # Is course offered at certain year, quarter
-def is_offered(self, course, quarter):
+def is_offered(course, quarter):
     return quarter in json.loads(course.offerings)
 
 # Are the prereqs meet for course
