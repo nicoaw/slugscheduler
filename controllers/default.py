@@ -8,16 +8,23 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 
-def index():
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
+import Catalog
+import Transcript
+from Scoreboard import Scoreboard
+from Schedule import Schedule
 
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+def index():
+    requirements = ''
+    transcript = Transcript.Transcript()
+    schedule = Schedule.Schedule(transcript, requirements)
+    
+    while not schedule.is_done():
+        scoreboard = Scoreboard.Scoreboard(transcript)
+        schedule.build(scoreboard)
+
+    return dict(
+            schedule=scoreboard.quarters
+            )
 
 
 def user():

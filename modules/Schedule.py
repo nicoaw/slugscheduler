@@ -2,14 +2,15 @@ import Catalog
 
 class Schedule:
     def __init__(self, transcript, requirements):
-        self.quarters = {}
+        self.quarters = []
         self.transcript = transcript
         self.requirements = requirements
 
     # Build schedule for specific year and quarter
-    def build(self, year, quarter, scoreboard):
+    def build(self, scoreboard):
+        self.quarters += []
         units = 0
-        while not Catalog.is_satisfied(self.transcript, self.requirements):
+        while True:
             course = scoreboard.pop()
 
             # Only allowed 19 units
@@ -23,18 +24,13 @@ class Schedule:
             # Course prereqs not met
             if not Catalog.is_satisfied(self.transcript, course.prereqs):
                 break
+
+            if self.is_done()
+                break
             
-            self.quarters[(year, quarter)] = course
+            self.quarters[:-1] += [course]
             units += course.units
 
-    # Get list of courses for specific year and quarter
-    def get_quarter(self, year, quarter):
-        return self.quarters[(year, quarter)]
+    def is_done(self):
+        return Catalog.is_satisfied(self.transcript, self.requirements)
 
-    # Get earliest year for schedule
-    def min_year(self):
-        return self.min_year
-
-    # Get most recent year for schedule
-    def max_year(self):
-        return self.max_year
