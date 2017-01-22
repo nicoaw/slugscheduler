@@ -12,15 +12,29 @@ import Catalog
 import Transcript
 import Scoreboard
 import Schedule
+import random
 
 def index():
     requirements = 'True'
     transcript = Transcript.Transcript()
     schedule = Schedule.Schedule(transcript, requirements)
+
+    courses = Catalog.get_courses()
+
+    schedule.quarters = [[]] * 8
+    for i in range(len(schedule.quarters)):
+        for j in range(3):
+            nbr = random.choice(courses)
+            course = Catalog.get_course(nbr)
+            schedule.quarters[i] += [course]
+            courses.remove(nbr)
     
+    # TODO: uncomment below to use scheduler
+    """
     while not schedule.is_done():
         scoreboard = Scoreboard.Scoreboard(transcript)
         schedule.build(scoreboard)
+        """
 
     return dict(
             schedule=schedule.quarters

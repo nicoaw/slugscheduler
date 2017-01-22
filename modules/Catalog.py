@@ -13,6 +13,7 @@ SUMMER = 'U'
 
 # Get course nbrs available
 def get_courses():
+    db = current.db
     courses = db(db.course).select()
     return [course.nbr for course in courses]
 
