@@ -25,7 +25,7 @@ class Schedule:
             if not Catalog.is_satisfied(self.transcript, course.prereqs):
                 break
 
-            if self.is_done()
+            if self.is_done():
                 break
             
             self.quarters[:-1] += [course]

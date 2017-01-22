@@ -1,0 +1,69 @@
+body {
+	background-image: url('{{=URL('static', 'images/background.jpg')}}');
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: black;
+}
+
+a {
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.2s;
+}
+
+h1:hover{
+	cursor: default;
+}
+
+
+.main-title {
+	font-family: 'Raleway', sans-serif;
+}
+
+.background-slug-yellow {
+	background-color: #E9E600;
+}
+
+.navbar {
+	margin: auto;
+}
+
+.navbar-brand {
+	font-size: 3rem;
+	-o-transition:.5s;
+	-ms-t1ransition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition: all .2s ease-in-out;
+
+}
+
+.navbar-hover:hover {
+	transform: scale(1.1);
+}
+
+.navbar-brand:hover{
+	cursor: default;
+}
+
+.btn {
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.btn:hover {
+	background-color: #d1cf00;
+}
+
+.slug-logo {
+}

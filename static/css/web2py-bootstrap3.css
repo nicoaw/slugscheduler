@@ -108,8 +108,6 @@ select.autocomplete {
     background: url(../images/background.jpg) no-repeat center center;
 }
 body {
-    padding-top: 60px;
-    margin-bottom: 60px;
 }
 header {
     -webkit-box-shadow: 0 0 8px 2px #000;
@@ -118,7 +116,6 @@ header {
     margin-bottom: 10px;
 }
 html {
-    position: relative;
     min-height: 100%;
 }
 .footer {

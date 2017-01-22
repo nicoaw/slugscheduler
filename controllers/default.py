@@ -10,11 +10,11 @@
 
 import Catalog
 import Transcript
-from Scoreboard import Scoreboard
-from Schedule import Schedule
+import Scoreboard
+import Schedule
 
 def index():
-    requirements = ''
+    requirements = 'True'
     transcript = Transcript.Transcript()
     schedule = Schedule.Schedule(transcript, requirements)
     
@@ -23,9 +23,8 @@ def index():
         schedule.build(scoreboard)
 
     return dict(
-            schedule=scoreboard.quarters
+            schedule=schedule.quarters
             )
-
 
 def user():
     """
