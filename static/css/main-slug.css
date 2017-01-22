@@ -26,6 +26,21 @@ footer {
 	height: auto;
 }
 
+.hidden{
+    display:none;
+}
+
+.unhidden{
+    display: block;
+}
+
+.body-block {
+	background-color: white;
+	padding: 4rem;
+    box-shadow: 1rem 1rem 1rem 1rem rgba(50, 50, 50, 1);
+
+}
+
 .slug-footer {
     position: absolute;
     bottom: 0;
@@ -40,6 +55,11 @@ footer {
 
 .background-slug-yellow {
 	background-color: #E9E600;
+	border-radius: .7rem;
+}
+
+.background-slug-yellow:hover{
+	color: black;
 }
 
 .navbar {
@@ -53,7 +73,6 @@ footer {
 	-moz-transition:.5s;
 	-webkit-transition:.5s;
 	transition: all .2s ease-in-out;
-
 }
 
 .navbar-hover:hover {
@@ -72,8 +91,12 @@ footer {
   transition:.5s;
 }
 
-.btn:hover {
-	background-color: #d1cf00;
+.btn:focus{
+	outline: 0px;
+}
+
+.btn:active {
+	outline: 0px;
 }
 
 .slug-footer {
@@ -82,5 +105,5 @@ footer {
 }
 
 .slug-copyright {
-	padding-top: 2.2rem;
+	padding-top: 2rem;
 }

@@ -51,6 +51,23 @@ user-scalable = yes allows the user to zoom in -->
   <!-- The javascript =============================== -->
   <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
   <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
+
+
+  <script type="text/javascript">
+    function unhide(clickedButton, divID) {
+      var item = document.getElementById(divID);
+      if (item) {
+        if(item.className=='hidden'){
+          item.className = 'unhidden' ;
+          clickedButton.value = 'hide'
+       }else{
+          item.className = 'hidden';
+          clickedButton.value = 'unhide'
+    }
+  }}
+  </script>
+
+
   {{block page_js}}{{end page_js}}
   {{if response.google_analytics_id:}}
   <!-- Analytics ==================================== -->
