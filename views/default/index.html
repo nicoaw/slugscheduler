@@ -3,56 +3,59 @@
 {{block title}}SlugScheduler{{end}}
 
 {{block header}}
-<!-- Static navbar -->
-<nav class="navbar navbar-default"
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <span class="navbar-brand" onClick="window.location.reload()">
-                SlugScheduler
-            </span>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav nav-text">
-                <li class="active"><a href="{{=URL('views', 'default/index.html')}}">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                
-            </ul>
-        </div>
-    </div>
-</nav>
 {{end}}
-
-
-
 
 <!-- Jumbotron block -->
 {{block jumbo}}
 <div class="jumbotron text-center main-title">
-    <h1 style="font-size: 5rem;">It's time to build the perfect schedule</h1>
+  <h1 style="font-size: 5rem; ">It's time to build the perfect schedule</h1>
 </div>
 {{end}}
 
 <!-- Body block -->
 {{block body}}
-<div class="container">
-    <!-- CODE TO DISPLAY SCHEDULE GOES HERE -->
+<div class="container body-block">
+
+  <!-- User Form with school options -->
+  <div class="user-forms">
+    <select class="form-control">
+      <option disabled>Arizona State University</option>
+      <option disabled>San Jose State University</option>
+      <option>UC Santa Cruz</option>
+      <option disabled>UC San Diego</option>
+    </select>
+  </div>
+
+  <br>
+
+  <!-- Submit Button -->
+  <div class="container-fluid text-center" id="options-div">
+    <button type="button" class="btn btn-md background-slug-yellow" onclick="unhide(this, 'schedule')" value="unhide" ><h5>Make my schedule</h5></button>
+  </div>
+
+  <!-- 4 Year Plan -->
+  <div id="schedule" class="schedule-data hidden">
+    {{qname=['Fall', 'Winter', 'Spring', 'Summer']}}
+    {{for i, quarter in enumerate(schedule):}}
+      <hr>
+      <h1 class="center">{{=qname[i % 4]}} Quarter</h1>
+      <hr>
+      {{for course in quarter:}}
+        <div class="row text-center">
+          <div class="col-md-4">
+            {{=course.nbr}}
+          </div>
+          <div class="col-md-4">
+            {{=course.title}}
+          </div>
+          <div class="col-md-4">
+            {{=course.units}}
+          </div>
+        </div>
+      {{pass}}
+    {{pass}}
+  </div>
+
 </div>
 {{end}}
 
-<!-- Footer block -->
-{{block footer}}
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="copyright pull-left">SlugScheduler &#169; {{=request.now.year}}</div>
-    </div>
-</footer>
-{{end}}
