@@ -1,5 +1,5 @@
 body {
-	background-image: url('{{=URL('static', 'images/background.jpg')}}');
+	background-color: #FFF;
 }
 
 a {
@@ -22,6 +22,17 @@ h1:hover{
 	cursor: default;
 }
 
+footer {
+	height: auto;
+}
+
+.slug-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+}
 
 .main-title {
 	font-family: 'Raleway', sans-serif;
@@ -65,5 +76,11 @@ h1:hover{
 	background-color: #d1cf00;
 }
 
-.slug-logo {
+.slug-footer {
+	position: relative;
+	background-color: #F8F5F0;
+}
+
+.slug-copyright {
+	padding-top: 2.2rem;
 }
