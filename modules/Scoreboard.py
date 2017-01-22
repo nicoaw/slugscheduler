@@ -1,18 +1,15 @@
 import Queue
 
 class Scoreboard:
-    def __init__(self, transcript, catalog):
+    def __init__(self, transcript):
         self.ratings = Queue.PriorityQueue()
         self.transcript = transcript
-        self.catalog = catalog
 
     def empty(self):
         return self.ratings.empty()
 
     # Rate courses in catalog
     def rate(self):
-        self.ratings.queue.clear()
-
         # Rate courses from catalog
         # CODE HERE
 
