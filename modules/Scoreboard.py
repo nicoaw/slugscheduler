@@ -12,6 +12,7 @@ class Scoreboard:
     def rate(self):
         # Rate courses from catalog
         # CODE HERE
+        return
 
     # Pop best course to schedule
     def pop(self):
