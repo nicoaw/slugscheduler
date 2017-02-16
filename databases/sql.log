@@ -1,4 +1,4 @@
-timestamp: 2017-01-21T17:30:31.868170
+timestamp: 2017-02-15T00:21:31.813334
 CREATE TABLE auth_user(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name CHAR(128),
@@ -10,21 +10,21 @@ CREATE TABLE auth_user(
     registration_id CHAR(512)
 );
 success!
-timestamp: 2017-01-21T17:30:32.094345
+timestamp: 2017-02-15T00:21:31.819563
 CREATE TABLE auth_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2017-01-21T17:30:32.178427
+timestamp: 2017-02-15T00:21:31.823116
 CREATE TABLE auth_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
 );
 success!
-timestamp: 2017-01-21T17:30:32.254085
+timestamp: 2017-02-15T00:21:31.826703
 CREATE TABLE auth_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
@@ -33,7 +33,7 @@ CREATE TABLE auth_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2017-01-21T17:30:32.330005
+timestamp: 2017-02-15T00:21:31.830318
 CREATE TABLE auth_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -43,7 +43,7 @@ CREATE TABLE auth_event(
     description TEXT
 );
 success!
-timestamp: 2017-01-21T17:30:32.405463
+timestamp: 2017-02-15T00:21:31.834159
 CREATE TABLE auth_cas(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
@@ -53,13 +53,122 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
-timestamp: 2017-01-21T17:30:32.509050
+timestamp: 2017-02-15T00:21:31.839171
 CREATE TABLE course(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nbr CHAR(512),
+    name CHAR(512),
     title CHAR(512),
     units INTEGER,
-    prereqs TEXT,
+    prerequisites TEXT,
     offerings TEXT
 );
+success!
+timestamp: 2017-02-15T00:21:31.843051
+CREATE TABLE program(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    requirements TEXT
+);
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
+success!
+DELETE FROM course;
+DELETE FROM sqlite_sequence WHERE name='course';
+success!
+DELETE FROM program;
+DELETE FROM sqlite_sequence WHERE name='program';
 success!

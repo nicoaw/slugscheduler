@@ -3,9 +3,14 @@
 # offerings format: json dumps of list of pairs
 
 db.define_table('course',
-        Field('nbr', 'string'),
+        Field('name', 'string'),
         Field('title', 'string'),
         Field('units', 'integer'),
-        Field('prereqs', 'text'),
+        Field('prerequisites', 'json'),
         Field('offerings', 'json')
+        )
+
+db.define_table('program',
+        Field('name', 'string'),
+        Field('requirements', 'json')
         )
