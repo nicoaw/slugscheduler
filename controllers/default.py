@@ -18,14 +18,8 @@ def index():
     s = SlugScheduler()
     schedule = s.schedule(catalog, program)
 
-    # Used to fake quarters
-    # TODO remove
-    def chunks(l, n):
-        n = max(1, n)
-        return (l[i:i+n] for i in xrange(0, len(l), n))
-
     return dict(
-            schedule=chunks(schedule, 3)
+            schedule=schedule
             )
 
 def user():
